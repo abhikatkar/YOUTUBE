@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Login</h1>
+    <div>
+      <form action="">
+        <input type="text" id="login_username" placeholder="username" />
+        <input type="text" id="login_password" placeholder="password" />
+      </form>
+      <button onclick="login()">Login</button>
+    </div>
+
+    <p>If not register, please <a href="youTube_signup.html">Signup</a></p>
+  </body>
+</html>
+
+<script>
+  async function login() {
+    let login_data = {
+      password: document.getElementById("login_password").value,
+      username: document.getElementById("login_username").value,
+    };
+
+    login_data = JSON.stringify(login_data);
+
+    let login_url = "https://masai-api-mocker.herokuapp.com/auth/login";
+    let res = await fetch(login_url, {
+      method: "POST",
+      body: login_data,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    let data = await res.json();
+
+    // console.log("data:", data);
+
+    if (data.error == false) {
+      alert("Successfully Login");
+      window.location.href = "youtubeHome.html";
+    } else {
+      alert("unsuccessfull login");
+    }
+  }
+</script>

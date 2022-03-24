@@ -1,0 +1,64 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="input">
+    <button onclick="searchVideos()">Search</button>
+    <div id="container"></div>
+    
+</body>
+</html>
+
+
+<script>
+
+    let key = "AIzaSyCGyHaLWfNwd-TrGwM3Oqge1nrYD6XgyG4";
+
+    // let container = document.getElementById("container");
+
+    async function searchVideos(){
+
+        try{
+            let input = document.getElementById("input").value
+
+         let res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?q=${input}&key=${key}&type=video`);
+
+         let data = await res.json();
+
+        //  let array_of_videos = data.items;
+
+        //  appendVideos(array_of_videos);
+
+         console.log("data",data);
+
+        }
+        catch (err){
+            console.log(err);
+        }
+         
+    }
+
+
+    function appendVideos(arr){
+        arr.forEach(({id: {videoId}}) =>{
+
+            console.log("videoId:",videoId);
+
+            // let div = document.createElement("div");
+
+            // let iframe = document.createElement("iframe");
+            // iframe.src = `https://www.youtube.com/embed/${videoId}`;
+
+
+            // div.append(iframe);
+            // container.append(div);
+
+        })
+    }
+
+</script> -->
